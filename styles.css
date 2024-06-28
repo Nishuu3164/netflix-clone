@@ -1,9 +1,11 @@
 
-body {
+body, html {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     margin: 0;
     color: #fff;
     background-color: #000;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 
@@ -15,7 +17,14 @@ body {
 .main{
     background: url('https://miro.medium.com/v2/resize:fit:4800/format:webp/1*5lyavS59mazOFnb55Z6znQ.png') no-repeat center center;
     background-size: cover;
-    border-bottom: 8px solid #ccc;
+    border-bottom: 4px solid #aaa;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
 }
 
 .main .blur {
@@ -23,17 +32,27 @@ body {
     bottom: 0;
     top: 0;
     width: 100%;
-    height: 72.5vh;
+    height: 100%;
     background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 1));
     z-index: 0;
 }
 
+header{
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
 .main  .container-1{
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    padding: 20px;
 }
+
+
+
 
 .logo img{
     width: 200px;
@@ -44,7 +63,6 @@ body {
 
 header .btn-container{
     display: flex;
-    flex-direction: row;
     align-items: center;
     margin-right: 10rem;
 }
@@ -88,6 +106,13 @@ header .btn-container{
 .signin:hover{
     background-color: #790a0a;
 }
+
+
+
+
+
+
+
 
 .container-2{
     margin-top: 6rem;
@@ -180,14 +205,13 @@ header .btn-container{
 
 
 
-.panel1, .panel3, .panel2, .panel4{
+.panel1, .panel2, .panel3, .panel4{
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    border-bottom: 4px solid #aaa;
-    margin-bottom: 5rem;
-    padding-bottom: 5rem;
+    border-bottom: 6px solid rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    position: relative;
 }
 
 
@@ -199,47 +223,62 @@ p{
     font-size: 1.5rem;
 }
 
-.panel1 .text-container, .panel3 .text-container{
-    margin-left: 10rem;
+.text-container {
+    max-width: 50%;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
-.panel1 .media-container, .panel3 .media-container{
-    margin-right: 10rem;
+.media-container {
+    position: relative;
+    overflow: hidden;
+    max-width: 50%;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
-.panel2 .media-container, .panel4 .media-container{
-    flex: 1;
-    margin-left: 10rem;
-}
-
-.panel2 .text-container, .panel4 .text-container{
-    flex: 2;
-    margin-right: 10rem;
+.frame-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
 .media-container img {
+    display: block;
     width: 100%; 
     height: auto;
+    position: relative;
+    z-index: 4;
+}
+
+/* Specific styles for each panel */
+.panel1, .panel3 {
+    flex-direction: row;
+}
+
+.panel2, .panel4 {
+    flex-direction: row-reverse;
 }
 
 .tv-video {
+    width: 100%;
+    height: auto;
     position: absolute;
-    top: 82.5%; 
-    left: 62.5%; 
-    width: 23.5%; 
-    height: 24%; 
-    object-fit: cover; 
-    z-index: -1;
+    top: 0;
+    left: 0;
+    object-fit: contain;
+    z-index: 1;
 }
 
 .f3-video {
+    width: 65%;
+    height: auto;
     position: absolute;
-    top: 193%; 
-    left: 62%; 
-    width: 22%; 
-    height: 24%; 
-    object-fit: cover; 
-    z-index: -1;
+    top: 21px;
+    left: 105px;
+    object-fit: contain;
+    z-index: 1;
 }
 
 
@@ -318,32 +357,34 @@ footer{
     background-color: #000;
     font-size: 15px;
     height: 35vh;
+    padding: 20px 0;
 }
 
 footer .container{
-    margin: 5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    margin: 0rem 10rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 footer .container p{
+    margin: 0 0 10px;
     font-size: 16px;
     color: #aaa;
 }
 
 .link-container{
     display: grid;
-    grid-template-columns: repeat(4, 20rem);
+    grid-template-columns: repeat(4, 1fr);
     justify-content: flex-start;
     align-items: flex-start;
-    gap: 1rem;
+    gap: 1opx;
     font-size: 15px;
 }
 
 .container a{
     color: #aaa;
+    text-decoration: nonw;
+    margin-bottom: 10px;
 }
 
 .container .lang-toggle{
@@ -353,6 +394,7 @@ footer .container p{
 
 .credit{
     color: #aaa;
+    margin-top: 20px;
 }
 
 
@@ -363,27 +405,11 @@ footer .container p{
 
 /* resposive */
 
-
 @media (max-width: 1200px) {
-    .panel1, .panel3, .panel2, .panel4 {
-        flex-direction: column;
-        align-items: flex-start;
-        margin-bottom: 3rem;
-        padding-bottom: 3rem;
+    .main .blur{
+        height: 100%;
     }
 
-    .panel1 .text-container, .panel3 .text-container, 
-    .panel2 .text-container, .panel4 .text-container,
-    .panel1 .media-container, .panel3 .media-container,
-    .panel2 .media-container, .panel4 .media-container {
-        margin: 0;
-    }
-
-    .panel2 .media-container, .panel4 .media-container,
-    .panel2 .text-container, .panel4 .text-container {
-        flex: none;
-        width: 100%;
-    }
 }
 
 @media (max-width: 768px) {
@@ -395,11 +421,18 @@ footer .container p{
         font-size: 1.2rem;
     }
 
+    .panel1, .panel2, .panel3, .panel4{
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .media-container, .text-container{
+        padding: 1px;
+    }
+
     .tv-video, .f3-video {
         width: 100%;
         height: auto;
-        top: auto;
-        left: auto;
     }
 }
 
@@ -412,4 +445,3 @@ footer .container p{
         font-size: 1rem;
     }
 }
-
